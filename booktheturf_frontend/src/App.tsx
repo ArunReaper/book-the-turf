@@ -1,9 +1,7 @@
-import TurfListPage from "./pages/TurfListPage";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-    return (
-        <TurfListPage />
-    );
+    return <AppRoutes />;
 }
 
 export default App;
