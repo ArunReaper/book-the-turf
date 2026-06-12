@@ -31,3 +31,17 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Mac
+.DS_Store
+
+# React
+node_modules/
+dist/
+
+# Environment files
+.env
+.env.local
+
+# Logs
+*.log
