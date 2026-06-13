@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTurfById } from "../api/turfService";
 import type { Turf } from "../types/Turf";
+import Layout from "../components/Layout";
 
 function TurfDetailsPage() {
 
@@ -24,17 +25,46 @@ function TurfDetailsPage() {
     }
 
     return (
-        <div>
-            <h1>{turf.name}</h1>
+        <Layout>
+            <div
+                style={{
+                    maxWidth: "800px",
+                    margin: "0 auto",
+                }}
+            >
+                <img
+                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018"
+                    alt={turf.name}
+                    style={{
+                        width: "100%",
+                        borderRadius: "12px",
+                        marginBottom: "20px",
+                    }}
+                />
 
-            <p>{turf.location}</p>
+                <h1>{turf.name}</h1>
 
-            <p>₹ {turf.pricePerHour}</p>
+                <p>
+                    <strong>Location:</strong> {turf.location}
+                </p>
 
-            <p>{turf.description}</p>
+                <p>
+                    <strong>Price:</strong> ₹{turf.pricePerHour}/hr
+                </p>
 
-            <p>{turf.contactNumber}</p>
-        </div>
+                <p>
+                    <strong>Description:</strong> {turf.description}
+                </p>
+
+                <p>
+                    <strong>Contact:</strong> {turf.contactNumber}
+                </p>
+
+                <button>
+                    I'm Interested
+                </button>
+            </div>
+        </Layout>
     );
 }
 

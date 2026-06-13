@@ -1,0 +1,28 @@
+import type { ReactNode } from "react";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
+interface LayoutProps {
+    children: ReactNode;
+}
+
+function Layout({ children }: LayoutProps) {
+    return (
+        <>
+            <Navbar />
+
+            <main
+                style={{
+                    minHeight: "80vh",
+                    padding: "2rem",
+                }}
+            >
+                {children}
+            </main>
+
+            <Footer />
+        </>
+    );
+}
+
+export default Layout;

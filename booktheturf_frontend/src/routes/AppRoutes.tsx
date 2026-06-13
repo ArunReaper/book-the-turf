@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import TurfListPage from "../pages/TurfListPage";
 import TurfDetailsPage from "../pages/TurfDetailsPage";
+import ContactPage from "../pages/ContactPage";
 
 function AppRoutes() {
     return (
@@ -23,6 +24,11 @@ function AppRoutes() {
                 <Route
                     path="/turfs/:id"
                     element={<TurfDetailsPage />}
+                />
+
+                <Route
+                    path="/contact"
+                    element={<ContactPage />}
                 />
 
             </Routes>
