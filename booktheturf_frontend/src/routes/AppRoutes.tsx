@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import TurfListPage from "../pages/TurfListPage";
 import TurfDetailsPage from "../pages/TurfDetailsPage";
 import ContactPage from "../pages/ContactPage";
+import AdminLeadsPage from "../pages/AdminLeadsPage";
 
 function AppRoutes() {
     return (
@@ -29,6 +30,11 @@ function AppRoutes() {
                 <Route
                     path="/contact"
                     element={<ContactPage />}
+                />
+
+                <Route
+                    path="/admin/leads"
+                    element={<AdminLeadsPage />}
                 />
 
             </Routes>

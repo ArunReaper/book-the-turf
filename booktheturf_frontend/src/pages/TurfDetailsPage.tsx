@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getTurfById } from "../api/turfService";
 import type { Turf } from "../types/Turf";
 import Layout from "../components/Layout";
+import LeadForm from "../components/LeadForm";
 
 function TurfDetailsPage() {
 
@@ -60,9 +61,7 @@ function TurfDetailsPage() {
                     <strong>Contact:</strong> {turf.contactNumber}
                 </p>
 
-                <button>
-                    I'm Interested
-                </button>
+                <LeadForm />
             </div>
         </Layout>
     );
