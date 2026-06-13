@@ -5,6 +5,8 @@ import com.dev.booktheturf.repository.LeadRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LeadServiceImpl implements LeadService {
@@ -17,5 +19,10 @@ public class LeadServiceImpl implements LeadService {
         lead.setStatus("NEW");
 
         return leadRepository.save(lead);
+    }
+
+    @Override
+    public List<Lead> getAllLeads() {
+        return leadRepository.findAll();
     }
 }
