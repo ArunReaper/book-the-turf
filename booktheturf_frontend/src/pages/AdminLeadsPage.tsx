@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import { getAllLeads } from "../api/leadService";
+import { getAllLeads, updateLeadStatus } from "../api/leadService";
 import type { Lead } from "../types/Lead";
 
 function AdminLeadsPage() {
@@ -9,36 +9,86 @@ function AdminLeadsPage() {
 
     useEffect(() => {
 
-        getAllLeads()
-            .then((data) => {
-                setLeads(data);
-            })
-            .catch(console.error);
+        loadLeads();
 
     }, []);
+
+    const loadLeads = async () => {
+
+        try {
+
+            const data = await getAllLeads();
+            setLeads(data);
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
+
+    };
+
+    const handleStatusChange = async (
+        leadId: number,
+        status: string
+    ) => {
+
+        try {
+
+            await updateLeadStatus(
+                leadId,
+                status
+            );
+
+            setLeads(
+                leads.map((lead) =>
+                    lead.id === leadId
+                        ? { ...lead, status }
+                        : lead
+                )
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Failed to update status");
+        }
+    };
 
     return (
         <Layout>
 
             <h1>Lead Dashboard</h1>
+
             <h2>
                 Total Leads: {leads.length}
             </h2>
+
             <table
                 style={{
                     width: "100%",
                     borderCollapse: "collapse",
+                    marginTop: "20px",
                 }}
             >
 
                 <thead>
 
                     <tr>
+
                         <th>ID</th>
+
                         <th>Name</th>
+
                         <th>Email</th>
+
                         <th>Phone</th>
+
+                        <th>Message</th>
+
                         <th>Status</th>
+
                     </tr>
 
                 </thead>
@@ -57,18 +107,42 @@ function AdminLeadsPage() {
 
                             <td>{lead.phone}</td>
 
+                            <td>{lead.message}</td>
+
                             <td>
-                                <span
-                                    style={{
-                                        color:
-                                            lead.status === "NEW"
-                                                ? "green"
-                                                : "black",
-                                        fontWeight: "bold",
-                                    }}
+
+                                <select
+                                    value={lead.status}
+                                    onChange={(e) =>
+                                        handleStatusChange(
+                                            lead.id,
+                                            e.target.value
+                                        )
+                                    }
                                 >
-                                    {lead.status}
-                                </span>
+
+                                    <option value="NEW">
+                                        NEW
+                                    </option>
+
+                                    <option value="CONTACTED">
+                                        CONTACTED
+                                    </option>
+
+                                    <option value="INTERESTED">
+                                        INTERESTED
+                                    </option>
+
+                                    <option value="BOOKED">
+                                        BOOKED
+                                    </option>
+
+                                    <option value="REJECTED">
+                                        REJECTED
+                                    </option>
+
+                                </select>
+
                             </td>
 
                         </tr>

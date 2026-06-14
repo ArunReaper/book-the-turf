@@ -24,5 +24,7 @@ public class Lead {
 
     private String message;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private LeadStatus status;
+
 }

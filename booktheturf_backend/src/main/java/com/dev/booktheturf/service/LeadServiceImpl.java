@@ -1,6 +1,7 @@
 package com.dev.booktheturf.service;
 
 import com.dev.booktheturf.entity.Lead;
+import com.dev.booktheturf.entity.LeadStatus;
 import com.dev.booktheturf.repository.LeadRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,13 +17,28 @@ public class LeadServiceImpl implements LeadService {
     @Override
     public Lead saveLead(Lead lead) {
 
-        lead.setStatus("NEW");
-
+        lead.setStatus(LeadStatus.NEW);
         return leadRepository.save(lead);
     }
 
     @Override
     public List<Lead> getAllLeads() {
         return leadRepository.findAll();
+    }
+
+    @Override
+    public Lead updateLeadStatus(
+            Long leadId,
+            LeadStatus status
+    ) {
+
+        Lead lead = leadRepository.findById(leadId)
+                .orElseThrow(
+                        () -> new RuntimeException("Lead not found")
+                );
+
+        lead.setStatus(status);
+
+        return leadRepository.save(lead);
     }
 }
