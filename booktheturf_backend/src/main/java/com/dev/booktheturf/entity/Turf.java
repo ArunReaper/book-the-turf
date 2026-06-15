@@ -20,11 +20,17 @@ public class Turf {
 
     private String location;
 
+    @Column(columnDefinition = "TEXT")
     private String description;
 
-    private Double pricePerHour;
-
+    @Column(length = 2000)
     private String imageUrl;
+
+    private String sportsType;
+
+    private Double rating;
+
+    private Double pricePerHour;
 
     private String contactNumber;
 }

@@ -9,4 +9,10 @@ public interface TurfService {
     List<Turf> getAllTurfs();
 
     Turf getTurfById(Long id);
+
+    Turf createTurf(Turf turf);
+
+    Turf updateTurf(Long id, Turf turf);
+
+    void deleteTurf(Long id);
 }

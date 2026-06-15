@@ -5,6 +5,9 @@ import TurfListPage from "../pages/TurfListPage";
 import TurfDetailsPage from "../pages/TurfDetailsPage";
 import ContactPage from "../pages/ContactPage";
 import AdminLeadsPage from "../pages/AdminLeadsPage";
+import AdminTurfsPage from "../pages/AdminTurfsPage";
+import AddTurfPage from "../pages/AddTurfPage";
+import EditTurfPage from "../pages/EditTurfPage";
 
 function AppRoutes() {
     return (
@@ -37,6 +40,20 @@ function AppRoutes() {
                     element={<AdminLeadsPage />}
                 />
 
+                <Route
+                    path="/admin/turfs"
+                    element={<AdminTurfsPage />}
+                />
+
+                <Route
+                    path="/admin/turfs/new"
+                    element={<AddTurfPage />}
+                />
+
+                <Route
+                    path="/admin/turfs/edit/:id"
+                    element={<EditTurfPage />}
+                />
             </Routes>
 
         </BrowserRouter>

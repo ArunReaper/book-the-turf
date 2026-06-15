@@ -34,12 +34,14 @@ function TurfDetailsPage() {
                 }}
             >
                 <img
-                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018"
+                    src={turf.imageUrl}
                     alt={turf.name}
                     style={{
                         width: "100%",
                         borderRadius: "12px",
                         marginBottom: "20px",
+                        maxHeight: "400px",
+                        objectFit: "cover",
                     }}
                 />
 

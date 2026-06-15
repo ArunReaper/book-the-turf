@@ -23,4 +23,36 @@ public class TurfServiceImpl implements TurfService {
         return turfRepository.findById(id)
                 .orElseThrow();
     }
+
+    @Override
+    public Turf createTurf(Turf turf) {
+
+        return turfRepository.save(turf);
+
+    }
+
+    @Override
+    public Turf updateTurf(
+            Long id,
+            Turf updatedTurf
+    ) {
+
+        Turf turf =
+                turfRepository.findById(id)
+                        .orElseThrow();
+
+        turf.setName(updatedTurf.getName());
+        turf.setLocation(updatedTurf.getLocation());
+        turf.setPricePerHour(updatedTurf.getPricePerHour());
+        turf.setImageUrl(updatedTurf.getImageUrl());
+
+        return turfRepository.save(turf);
+    }
+
+    @Override
+    public void deleteTurf(Long id) {
+
+        turfRepository.deleteById(id);
+
+    }
 }
