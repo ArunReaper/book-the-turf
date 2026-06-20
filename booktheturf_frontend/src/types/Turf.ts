@@ -11,6 +11,7 @@ export interface Turf {
   ratingCount?: number;
   distance?: string;
   area?: string;
+  address?: string;
   amenities?: string[];
   images?: string[];
   isBookable?: boolean;

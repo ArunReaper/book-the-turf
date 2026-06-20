@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { getAllTurfs } from "../api/turfService";
 import TurfCard from "../components/TurfCard";
 import type { Turf } from "../types/Turf";
@@ -21,10 +22,25 @@ export function parseSportsString(sportsType: string | undefined | null, sportsT
 }
 
 function TurfListPage() {
+  const [searchParams] = useSearchParams();
   const [turfs, setTurfs] = useState<Turf[]>([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedSport, setSelectedSport] = useState(ALL_SPORTS);
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
+  const [selectedSport, setSelectedSport] = useState(
+    searchParams.get("sport") || ALL_SPORTS
+  );
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Sync when URL params change
+    const urlSearch = searchParams.get("search");
+    const urlSport = searchParams.get("sport");
+    if (urlSearch !== null && urlSearch !== searchQuery) {
+      setSearchQuery(urlSearch);
+    }
+    if (urlSport !== null && urlSport !== selectedSport && urlSport !== ALL_SPORTS) {
+      setSelectedSport(urlSport);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     getAllTurfs()

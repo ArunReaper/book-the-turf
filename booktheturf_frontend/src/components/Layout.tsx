@@ -11,12 +11,7 @@ function Layout({ children }: LayoutProps) {
         <>
             <Navbar />
 
-            <main
-                style={{
-                    minHeight: "80vh",
-                    padding: "2rem",
-                }}
-            >
+            <main style={{ minHeight: "80vh" }}>
                 {children}
             </main>
 
