@@ -13,7 +13,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOriginPatterns(
                         "http://localhost:*",
-                        "https://*.vercel.app"
+                        "https://*.vercel.app",
+                        "https://*.booktheturf.online",
+                        "https://booktheturf.online"
                 )
                 .allowedMethods("*")
                 .allowedHeaders("*");
