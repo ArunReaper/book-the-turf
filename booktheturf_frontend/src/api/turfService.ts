@@ -17,7 +17,7 @@ export const createTurf = async (
 
     const response =
         await turfApi.post(
-            "/turfs",
+            "/admin/turfs",
             turf
         );
 
@@ -31,7 +31,7 @@ export const updateTurf = async (
 
     const response =
         await turfApi.put(
-            `/turfs/${id}`,
+            `/admin/turfs/${id}`,
             turf
         );
 
@@ -43,6 +43,6 @@ export const deleteTurf = async (
 ) => {
 
     await turfApi.delete(
-        `/turfs/${id}`
+        `/admin/turfs/${id}`
     );
 };

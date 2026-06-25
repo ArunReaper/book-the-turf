@@ -4,10 +4,12 @@ import HomePage from "../pages/HomePage";
 import TurfListPage from "../pages/TurfListPage";
 import TurfDetailsPage from "../pages/TurfDetailsPage";
 import ContactPage from "../pages/ContactPage";
+import LoginPage from "../pages/LoginPage";
 import AdminLeadsPage from "../pages/AdminLeadsPage";
 import AdminTurfsPage from "../pages/AdminTurfsPage";
 import AddTurfPage from "../pages/AddTurfPage";
 import EditTurfPage from "../pages/EditTurfPage";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 function AppRoutes() {
     return (
@@ -36,23 +38,44 @@ function AppRoutes() {
                 />
 
                 <Route
+                    path="/admin/login"
+                    element={<LoginPage />}
+                />
+
+                <Route
                     path="/admin/leads"
-                    element={<AdminLeadsPage />}
+                    element={
+                        <ProtectedRoute>
+                            <AdminLeadsPage />
+                        </ProtectedRoute>
+                    }
                 />
 
                 <Route
                     path="/admin/turfs"
-                    element={<AdminTurfsPage />}
+                    element={
+                        <ProtectedRoute>
+                            <AdminTurfsPage />
+                        </ProtectedRoute>
+                    }
                 />
 
                 <Route
                     path="/admin/turfs/new"
-                    element={<AddTurfPage />}
+                    element={
+                        <ProtectedRoute>
+                            <AddTurfPage />
+                        </ProtectedRoute>
+                    }
                 />
 
                 <Route
                     path="/admin/turfs/edit/:id"
-                    element={<EditTurfPage />}
+                    element={
+                        <ProtectedRoute>
+                            <EditTurfPage />
+                        </ProtectedRoute>
+                    }
                 />
             </Routes>
 

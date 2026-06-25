@@ -6,7 +6,7 @@ export const createLead = async (lead: unknown) => {
 };
 
 export const getAllLeads = async () => {
-    const response = await turfApi.get("/leads");
+    const response = await turfApi.get("/admin/leads");
     return response.data;
 };
 
@@ -16,7 +16,7 @@ export const updateLeadStatus = async (
 ) => {
 
     const response = await turfApi.put(
-        `/leads/${leadId}/status`,
+        `/admin/leads/${leadId}/status`,
         {
             status
         }

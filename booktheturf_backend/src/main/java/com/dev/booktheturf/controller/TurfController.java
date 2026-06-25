@@ -23,34 +23,4 @@ public class TurfController {
     public Turf getTurfById(@PathVariable Long id) {
         return turfService.getTurfById(id);
     }
-
-    @PostMapping
-    public Turf createTurf(
-            @RequestBody Turf turf
-    ) {
-
-        return turfService.createTurf(turf);
-    }
-
-    @PutMapping("/{id}")
-    public Turf updateTurf(
-            @PathVariable Long id,
-            @RequestBody Turf turf
-    ) {
-
-        return turfService.updateTurf(
-                id,
-                turf
-        );
-
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteTurf(
-            @PathVariable Long id
-    ) {
-
-        turfService.deleteTurf(id);
-
-    }
 }
